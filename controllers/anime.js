@@ -21,7 +21,17 @@ function newAnime(req, res) {
 }
 
 function create(req, res) {
-  console.log("creating");
+  if (req.body.cast) {
+    req.body.cast = req.body.cast.split(', ')
+  }
+  Anime.create(req.body)
+  .then(anime => {
+    res.redirect('/anime/new')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/anime/new')
+  })
 }
 
 export {
