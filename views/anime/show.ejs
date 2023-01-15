@@ -1,0 +1,21 @@
+<%- include('../partials/html-head') %>
+
+<%- include('../partials/nav') %>
+
+<main>
+  <h1?><%= title %></h1>
+  <section>
+    <div>Title: </div>
+    <div><%= anime.title %></div>
+    <div>Release Year: </div>
+    <div><%= anime.releaseYear %></div>
+    <div>English Release Year: </div>
+    <div><%= anime.englishReleaseYear %></div>
+    <div>Cast: </div>
+    <div><%= anime.cast.join(', ') %></div>
+    <div>English Cast: </div>
+    <div><%= anime.englishDubCast.join(', ') %></div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

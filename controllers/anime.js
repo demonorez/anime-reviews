@@ -37,8 +37,23 @@ function create(req, res) {
   })
 }
 
+function show(req, res) {
+  Anime.findById(req.params.id)
+  .then(anime => {
+    res.render('anime/show', {
+      title: 'Anime Details',
+      anime,
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
 export {
   index,
   newAnime as new,
-  create
+  create,
+  show,
 }
