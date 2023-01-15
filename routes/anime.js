@@ -9,6 +9,8 @@ router.get('/new', animeCtrl.new)
 
 router.get('/:id', animeCtrl.show)
 
+router.get('/:id/edit', animeCtrl.edit)
+
 router.post('/', animeCtrl.create)
 
 router.delete('/:id', animeCtrl.delete)

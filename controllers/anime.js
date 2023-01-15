@@ -62,10 +62,26 @@ function deleteAnime(req, res) {
   })
 }
 
+function edit(req, res) {
+  Anime.findById(req.params.id)
+  .then(anime => {
+    res.render('anime/edit', {
+      anime,
+      title: "Edit Anime Details"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
 export {
   index,
   newAnime as new,
   create,
   show,
-  deleteAnime as delete
+  deleteAnime as delete,
+  edit,
+
 }

@@ -1,0 +1,22 @@
+<%- include('../partials/html-head') %>
+
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form id="new-form" action="/anime" method="POST">
+    <label for="title-input">Title</label>
+    <input type="text" name="title" value="<%= anime.title %>" id="title-input">
+    <label for="release-year-input">Release Year:</label>
+    <input type="text" name="releaseYear" value="<%= anime.releaseYear %>" id="release-year-input">
+    <label for="english-release-year-input">English Dub Release Year:</label>
+    <input type="text" name="englishReleaseYear" value="<%= anime.englishReleaseYear %>" id="english-release-year-input">
+    <label for="cast-input">Cast (separate with commas for now)</label>
+    <input type="text" name="cast" value="<%= anime.cast %>" id="cast-input">
+    <label for="english-cast-input">English Cast (separate with commas for now)</label>
+    <input type="text" name="englishDubCast" value="<%= anime.englishDubCast %>" id="english-cast-input">
+    <button type="submit">Add Anime</button>
+  </form>
+</main>
+
+<%- include("../partials/footer") %>
