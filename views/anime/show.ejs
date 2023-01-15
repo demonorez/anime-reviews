@@ -22,6 +22,28 @@
     <div><%= anime.englishDubCast.join(', ') %></div>
   </section>
   <h2>Reviews</h2>
+  <% if (anime.reviews.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Review</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% anime.reviews.forEach(review => { %>
+          <tr>
+            <td><%= review.createdAt.toLocaleDateString() %></td>
+            <td><%= review.content %></td>
+            <td><%= review.rating %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <% } else { %>
+      <h3>No Reviews Yet</h3>
+    <% } %>
   <form
     id="add-review-form"
     action="/anime/<%= anime._id %>/reviews"
