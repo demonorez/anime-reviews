@@ -1,0 +1,28 @@
+<%- include('../partials/html-head') %>
+
+<%- include('../partials/nav') %>
+
+<main>
+  <h1>Anime List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Release Year</th>
+        <th>Release Year English Dub</th>
+        <th>Cast</th>
+        <th>English Cast</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% anime.forEach(anime => { %>
+        <tr>
+          <td><%= anime.title %></td>
+          <td><%= anime.releaseYear %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>
