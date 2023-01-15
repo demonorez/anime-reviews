@@ -3,10 +3,7 @@ import mongoose, { Schema } from 'mongoose'
 const schema = mongoose.Schema
 
 const animeSchema = new Schema({
-  title: {
-    String,
-    required: true,
-  },
+  title: String,
   releaseYear: {type: Number, default: 2010},
   englishReleaseYear: {type: Number, default: 2010},
   cast: [String],

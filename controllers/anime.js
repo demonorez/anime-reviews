@@ -51,9 +51,21 @@ function show(req, res) {
   })
 }
 
+function deleteAnime(req, res) {
+  Anime.findByIdAndDelete(req.params.id)
+  .then(anime => {
+    res.redirect('/anime')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/anime')
+  })
+}
+
 export {
   index,
   newAnime as new,
   create,
   show,
+  deleteAnime as delete
 }

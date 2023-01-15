@@ -11,6 +11,7 @@ router.get('/:id', animeCtrl.show)
 
 router.post('/', animeCtrl.create)
 
+router.delete('/:id', animeCtrl.delete)
 export {
   router
 }

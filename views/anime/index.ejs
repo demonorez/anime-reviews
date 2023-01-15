@@ -19,7 +19,14 @@
           <td><%= anime.title %></td>
           <td><%= anime.releaseYear %></td>
           <td><a href="/anime/<%= anime._id %>">Details</a></td>
-          <td></td>
+          <td>
+            <form 
+              action="/anime/<%= anime._id %>?_method=DELETE" 
+              method="POST"
+            >
+              <button>X</button>
+            </form>
+          </td>
         </tr>
       <% }) %>
     </tbody>
