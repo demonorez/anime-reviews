@@ -13,6 +13,8 @@ router.get('/:id/edit', animeCtrl.edit)
 
 router.post('/', animeCtrl.create)
 
+router.put('/:id', animeCtrl.update)
+
 router.delete('/:id', animeCtrl.delete)
 export {
   router
