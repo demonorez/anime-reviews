@@ -21,6 +21,29 @@
     <div>English Cast: </div>
     <div><%= anime.englishDubCast.join(', ') %></div>
   </section>
+  <h2>Reviews</h2>
+  <form
+    id="add-review-form"
+    action="/anime/<%= anime._id %>/reviews"
+    method="POST"
+  >
+    <label for="content-textarea">Review: </label>
+    <textarea name="content" id="content-textarea"></textarea>
+    <label for="rating-select">Rating: </label>
+    <select name="rating" id="rating-select">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10" selected>10</option>
+    </select>
+    <button type="submit">Add Review</button>
+</form>
 </main>
 
 <%- include('../partials/footer') %>

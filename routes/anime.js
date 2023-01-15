@@ -13,6 +13,8 @@ router.get('/:id/edit', animeCtrl.edit)
 
 router.post('/', animeCtrl.create)
 
+router.post('/:id/reviews', animeCtrl.createReview)
+
 router.put('/:id', animeCtrl.update)
 
 router.delete('/:id', animeCtrl.delete)

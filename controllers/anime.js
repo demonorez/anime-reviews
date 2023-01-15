@@ -90,6 +90,25 @@ function update(req, res) {
   })
 }
 
+function createReview(req, res) {
+  Anime.findById(req.params.id)
+  .then(anime => {
+    anime.reviews.push(req.body)
+    anime.save()
+    .then(() => {
+      res.redirect(`/anime/${anime._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
 export {
   index,
   newAnime as new,
@@ -98,4 +117,5 @@ export {
   deleteAnime as delete,
   edit,
   update, 
+  createReview,
 }
