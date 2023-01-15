@@ -3,9 +3,12 @@ import mongoose, { Schema } from 'mongoose'
 const schema = mongoose.Schema
 
 const animeSchema = new Schema({
-  title: String,
-  releaseYear: Number,
-  englishReleaseYear: Number,
+  title: {
+    String,
+    required: true,
+  },
+  releaseYear: {type: Number, default: 2010},
+  englishReleaseYear: {type: Number, default: 2010},
   cast: [String],
   englishDubCast: [String], 
 }, {

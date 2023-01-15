@@ -24,6 +24,9 @@ function create(req, res) {
   if (req.body.cast) {
     req.body.cast = req.body.cast.split(', ')
   }
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key]
+  }
   Anime.create(req.body)
   .then(anime => {
     res.redirect('/anime/new')
