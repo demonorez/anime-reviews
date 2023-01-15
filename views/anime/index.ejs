@@ -9,9 +9,8 @@
       <tr>
         <th>Title</th>
         <th>Release Year</th>
-        <th>Release Year English Dub</th>
-        <th>Cast</th>
-        <th>English Cast</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -19,9 +18,8 @@
         <tr>
           <td><%= anime.title %></td>
           <td><%= anime.releaseYear %></td>
-          <td><%= anime.englishReleaseYear %></td>
-          <td><%= anime.cast %></td>
-          <td><%= anime.englishDubCast %></td>
+          <td><a href="/anime/<%= anime._id %>">Details</a></td>
+          <td></td>
         </tr>
       <% }) %>
     </tbody>

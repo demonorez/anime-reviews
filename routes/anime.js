@@ -7,6 +7,8 @@ router.get('/', animeCtrl.index)
 
 router.get('/new', animeCtrl.new)
 
+router.get('/:id', animeCtrl.show)
+
 router.post('/', animeCtrl.create)
 
 export {
