@@ -20,7 +20,12 @@ function newAnime(req, res) {
   })
 }
 
+function create(req, res) {
+  console.log("creating");
+}
+
 export {
   index,
   newAnime as new,
+  create
 }
