@@ -1,10 +1,11 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose from 'mongoose'
 
-const schema = mongoose.Schema
+const Schema = mongoose.Schema
 
 const reviewSchema = new Schema({
   content: String,
-  rating: {type: Number, min: 1, max: 10, default: 10}
+  rating: {type: Number, min: 1, max: 10, default: 10},
+  creator: { type: Schema.Types.ObjectId, ref: "Profile" },
 }, {
   timestamps: true
 })
@@ -15,8 +16,9 @@ const animeSchema = new Schema({
   englishReleaseYear: {type: Number, default: 2010},
   cast: [String],
   englishDubCast: [String], 
-  reviews: [reviewSchema],
   cast: [{type: Schema.Types.ObjectId, ref: 'Performer'}],
+  owner: { type: Schema.Types.ObjectId, ref: "Profile" },
+  reviews: [reviewSchema],
 }, {
   timestamps: true
 })

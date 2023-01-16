@@ -19,7 +19,7 @@
     <div>Cast: </div>
     <ul>
       <% anime.cast.forEach(voiceActor => { %>
-        <li><%= voiceActor.name %></li>
+        <li><%= voiceActor.name %> - <%= voiceActor.version %></li>
       <% }) %>
     </ul>
   </section>
@@ -40,16 +40,18 @@
         <tr>
           <th>Date</th>
           <th>Review</th>
+          <th>Owner</th>
           <th>Rating</th>
         </tr>
       </thead>
       <tbody>
         <% let total = 0 %>
-        <% anime.reviews.forEach(review => { %>
+        <% anime.reviews?.forEach(review => { %>
           <% total += review.rating %>
           <tr>
             <td><%= review.createdAt.toLocaleDateString() %></td>
             <td><%= review.content %></td>
+            <td><%= review.creator.name %></td>
             <td><%= review.rating %></td>
           </tr>
         <% }) %>

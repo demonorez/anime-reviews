@@ -25,6 +25,7 @@ function create(req, res) {
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key]
   }
+  req.body.owner = req.user.profile._id
   Anime.create(req.body)
   .then(anime => {
     res.redirect(`/anime/${anime._id}`)
@@ -38,6 +39,8 @@ function create(req, res) {
 function show(req, res) {
   Anime.findById(req.params.id)
   .populate('cast')
+  .populate('owner')
+  .populate('reviews.creator')
   .then(anime => {
     Performer.find({_id: {$nin: anime.cast}})
     .then(performersNotInCast => {
@@ -96,6 +99,7 @@ function update(req, res) {
 function createReview(req, res) {
   Anime.findById(req.params.id)
   .then(anime => {
+    req.body.creator = req.user.profile._id
     anime.reviews.push(req.body)
     anime.save()
     .then(() => {

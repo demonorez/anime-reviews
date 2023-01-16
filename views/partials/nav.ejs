@@ -6,7 +6,7 @@
   <nav>
     <a href="/anime">All Anime</a>
     <% if (user) { %>
-      <a href="/anime/new">Add Anime</a>
+      <a href="/anime/new" <%- title === 'Add Anime' ? 'class="active"' : '' %>>Add Anime</a>
       <a href="/performers/new" <%- title === 'Add Performer' ? 'class="active"' : '' %>
       >
         ADD PERFORMER</a>
