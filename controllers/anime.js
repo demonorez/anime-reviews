@@ -26,7 +26,7 @@ function create(req, res) {
   }
   Anime.create(req.body)
   .then(anime => {
-    res.redirect('/anime')
+    res.redirect(`/anime/${anime._id}`)
   })
   .catch(err => {
     console.log(err)
