@@ -14,6 +14,15 @@ function newPerformer(req, res) {
   })
 }
 
+function create(req, res) {
+  console.log("adding new guy/grill")
+  Performer.create(req.body)
+  .then(performer => {
+    res.redirect('performers/new')
+  })
+}
+
 export {
   newPerformer as new,
+  create,
 }
