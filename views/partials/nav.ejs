@@ -5,8 +5,11 @@
 <body>
   <nav>
     <a href="/anime">All Anime</a>
-    <a href="/anime/new">Add Anime</a>
     <% if (user) { %>
+      <a href="/anime/new">Add Anime</a>
+      <a href="/performers/new" <%- title === 'Add Performer' ? 'class="active"' : '' %>
+      >
+        ADD PERFORMER</a>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>
       </a>

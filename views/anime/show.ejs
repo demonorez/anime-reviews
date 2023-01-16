@@ -3,7 +3,7 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1?><%= title %></h1>
+  <h1><%= title %></h1>
   <section>
     <div>Title: </div>
     <div>
@@ -16,11 +16,9 @@
     <div><%= anime.releaseYear %></div>
     <div>English Release Year: </div>
     <div><%= anime.englishReleaseYear %></div>
-    <div>Cast: </div>
-    <div><%= anime.cast.join(', ') %></div>
-    <div>English Cast: </div>
-    <div><%= anime.englishDubCast.join(', ') %></div>
+    
   </section>
+
   <h2>Reviews</h2>
   <% if (anime.reviews.length) { %>
     <table>
@@ -32,7 +30,9 @@
         </tr>
       </thead>
       <tbody>
+        <% let total = 0 %>
         <% anime.reviews.forEach(review => { %>
+          <% total += review.rating %>
           <tr>
             <td><%= review.createdAt.toLocaleDateString() %></td>
             <td><%= review.content %></td>

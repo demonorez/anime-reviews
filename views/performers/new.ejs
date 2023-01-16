@@ -1,0 +1,20 @@
+<%- include('../partials/html-head') %>
+
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%+ title %></h1>
+  <p>Doublecheck the list
+    <select>
+      <% performers.forEach(performer => { %>
+        <option><%= performer.name %></option>
+      <% }) %>
+    </select>
+  </p>
+  <form id="add-performer-form" action="/performers" method="POST"></form>
+    <label for="name-input">Name: </label>
+    <input type="text" name="name" id="name-input">
+    <button type="submit">Add Performer</button>
+</main>
+
+<%- include('../partials/footer') %>
