@@ -1,4 +1,5 @@
 import { Anime } from '../models/anime.js'
+import { Performer } from '../models/performer.js'
 
 function index(req, res) {
   Anime.find({})
@@ -36,10 +37,15 @@ function create(req, res) {
 
 function show(req, res) {
   Anime.findById(req.params.id)
+  .populate('cast')
   .then(anime => {
-    res.render('anime/show', {
-      title: 'Anime Details',
-      anime,
+    Performer.find({_id: {$nin: anime.cast}})
+    .then(performers => {
+      res.render('anime/show', {
+        title: 'Anime Details',
+        anime,
+        performers,
+      })
     })
   })
   .catch(err => {
@@ -106,6 +112,25 @@ function createReview(req, res) {
   })
 }
 
+function addToCast(req, res) {
+  Anime.findById(req.params.id)
+  .then(anime => {
+    anime.cast.push(req.body.performerId)
+    anime.save()
+    .then(() => {
+      res.redirect(`/anime/${anime._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/anime')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/anime')
+  })
+}
+
 export {
   index,
   newAnime as new,
@@ -115,4 +140,5 @@ export {
   edit,
   update, 
   createReview,
+  addToCast,
 }

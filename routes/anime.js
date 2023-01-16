@@ -15,6 +15,8 @@ router.post('/', animeCtrl.create)
 
 router.post('/:id/reviews', animeCtrl.createReview)
 
+router.post('/:id/performers', animeCtrl.addToCast)
+
 router.put('/:id', animeCtrl.update)
 
 router.delete('/:id', animeCtrl.delete)

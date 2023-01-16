@@ -16,9 +16,20 @@
     <div><%= anime.releaseYear %></div>
     <div>English Release Year: </div>
     <div><%= anime.englishReleaseYear %></div>
-    
+    <div>Cast: </div>
+    <ul>
+      <% anime.cast.forEach(voiceActor => { %>
+        <li><%= voiceActor.name %></li>
+      <% }) %>
+    </ul>
   </section>
 
+  <form id="add-performer" action="/anime/<%= anime._id %>/performers" method="POST">
+    <select name="performerId">
+      <option value="<%= performer._id %>"><%= performer.name %></option>
+    </select>
+    <button type="submit">Add to Cast</button>
+  </form>
   <h2>Reviews</h2>
   <% if (anime.reviews.length) { %>
     <table>
