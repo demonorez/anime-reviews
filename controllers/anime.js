@@ -40,11 +40,11 @@ function show(req, res) {
   .populate('cast')
   .then(anime => {
     Performer.find({_id: {$nin: anime.cast}})
-    .then(performers => {
+    .then(performersNotInCast => {
       res.render('anime/show', {
         title: 'Anime Details',
         anime,
-        performers,
+        performersNotInCast,
       })
     })
   })

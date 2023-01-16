@@ -26,10 +26,13 @@
 
   <form id="add-performer" action="/anime/<%= anime._id %>/performers" method="POST">
     <select name="performerId">
-      <option value="<%= performer._id %>"><%= performer.name %></option>
+      <% performersNotInCast.forEach(performer => { %>
+        <option value="<%= performer._id %>"><%= performer.name %></option>
+        <% }) %>
     </select>
     <button type="submit">Add to Cast</button>
   </form>
+
   <h2>Reviews</h2>
   <% if (anime.reviews.length) { %>
     <table>
