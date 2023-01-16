@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const performerSchema = new Schema({
   name: {
     type: String,
-    version: String,
+    enum: ["Japanese", "English"],
+    default: "Japanese",
     required: true,
   }
 }, {
