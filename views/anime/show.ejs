@@ -42,6 +42,8 @@
           <th>Review</th>
           <th>Owner</th>
           <th>Rating</th>
+          <th>Delete/Update</th>
+          <th>Average Review</th>
         </tr>
       </thead>
       <tbody>
@@ -64,6 +66,12 @@
             </td>
           </tr>
         <% }) %>
+        <tr>
+          <td colspan="5"></td>
+          <td>
+            <strong><%= (total / anime.reviews.length).toFixed(1) %></strong>
+          </td>
+        </tr>
       </tbody>
     </table>
     <% } else { %>
