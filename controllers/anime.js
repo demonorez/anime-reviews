@@ -58,9 +58,16 @@ function show(req, res) {
 }
 
 function deleteAnime(req, res) {
-  Anime.findByIdAndDelete(req.params.id)
+  Anime.findById(req.params.id)
   .then(anime => {
-    res.redirect('/anime')
+    if (anime.owner.equals(req.user.profile._id)) {
+      anime.delete()
+      .then(() => {
+        res.redirect('/anime')
+      })
+    } else {
+      throw new Error('Not authorized user!')
+    }
   })
   .catch(err => {
     console.log(err)
@@ -86,9 +93,16 @@ function update(req, res) {
   for (let key in req.body) {
     if(req.body[key] === "") delete req.body[key]
   }
-  Anime.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  Anime.findById(req.params.id, req.body, {new: true})
   .then(anime => {
-    res.redirect(`/anime/${anime._id}`)
+    if (anime.owner.equals(req.user.profile._id)) {
+      anime.updateOne(req.body)
+      .then(() => {
+        res.redirect(`/anime/${anime._id}`)
+      })
+    } else {
+      throw new Error('Not authorized user!')
+    }
   })
   .catch(err => {
     console.log(err)
