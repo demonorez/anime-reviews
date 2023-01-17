@@ -53,6 +53,15 @@
             <td><%= review.content %></td>
             <td><%= review.creator.name %></td>
             <td><%= review.rating %></td>
+            <td>
+              <% if (review.creator._id.equals(user?.profile._id)) { %>
+                <form 
+                action="/anime/<%= anime._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                  <button type="submit">Delete</button>
+                </form>
+                <!-- <a href="/anime/<%= anime._id %>/reviews/<%= review._id %>/edit" class="btn">Update</a> -->
+              <% } %>
+            </td>
           </tr>
         <% }) %>
       </tbody>

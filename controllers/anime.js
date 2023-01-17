@@ -149,6 +149,25 @@ function addToCast(req, res) {
   })
 }
 
+function deleteReview(req, res) {
+  Anime.findById(req.params.animeId)
+  .then(anime => {
+    anime.reviews.remove({ _id: req.params.reviewId})
+    anime.save()
+    .then(() => {
+      res.redirect(`/anime/${anime._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/anime')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('anime')
+  })
+}
+
 export {
   index,
   newAnime as new,
@@ -159,4 +178,5 @@ export {
   update, 
   createReview,
   addToCast,
+  deleteReview,
 }

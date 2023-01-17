@@ -20,6 +20,9 @@ router.post('/:id/performers', animeCtrl.addToCast)
 router.put('/:id', animeCtrl.update)
 
 router.delete('/:id', animeCtrl.delete)
+
+router.delete('/:animeId/reviews/:reviewId', animeCtrl.deleteReview)
+
 export {
   router
 }
