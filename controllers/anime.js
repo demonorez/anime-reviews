@@ -168,6 +168,46 @@ function deleteReview(req, res) {
   })
 }
 
+function editReview(req, res) {
+  Anime.findById(req.params.animeId)
+  .then(anime => {
+    if (anime.owner.equals(req.user.profile._id)) {
+      const reviewDoc = anime.reviews.id(req.params.reviewId)
+      res.render('anime/editReview', {
+        anime,
+        review: reviewDoc,
+        title: 'Update Review'
+      })
+    } else {
+      throw new Error('Not authorized to edit this review!')
+    }
+  })
+}
+
+function updateReview(req, res) {
+  Anime.findById(req.params.animeId)
+  .then(anime => {
+    if(anime.owner.equals(req.user.profile._id)) {
+      const reviewDoc = anime.reviews.id(req.params.reviewId)
+      reviewDoc.set(req.body)
+      anime.save()
+      .then(() => {
+        res.redirect(`/anime/${anime._id}`)
+      })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/anime')
+      })
+    } else {
+      throw new Error('Not authorized to change reviews')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/anime')
+  })
+}
+
 export {
   index,
   newAnime as new,
@@ -179,4 +219,6 @@ export {
   createReview,
   addToCast,
   deleteReview,
+  editReview,
+  updateReview,
 }

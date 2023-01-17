@@ -1,0 +1,24 @@
+<%- include('../partials/html-head') %>
+
+<%- include('../partials/nav') %>
+
+<section> 
+  <h1>Edit your Review!</h1>
+  <form
+  action="/anime/<%= anime._id %>/reviews/<%= review._id %>?_method=PUT"
+  method="POST"
+  >
+    <label>Content:
+      <textarea
+      cols="30"
+      rows="5"
+      type="text"
+      name="content"
+      autocomplete="off"
+    ><%= review.content %></textarea>
+    </label>
+    <button type="submit">Update Review</button>
+</form>
+</section>
+
+<%- include('../partials/footer') %>

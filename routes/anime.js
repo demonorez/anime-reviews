@@ -1,27 +1,32 @@
 import { Router } from 'express'
 import * as animeCtrl from '../controllers/anime.js'
+import { isLoggedIn } from '../middleware/middleware.js'
 
 const router = Router()
 
 router.get('/', animeCtrl.index)
 
-router.get('/new', animeCtrl.new)
-
 router.get('/:id', animeCtrl.show)
 
-router.get('/:id/edit', animeCtrl.edit)
+router.get('/new', isLoggedIn, animeCtrl.new)
 
-router.post('/', animeCtrl.create)
+router.get('/:id/edit', isLoggedIn, animeCtrl.edit)
 
-router.post('/:id/reviews', animeCtrl.createReview)
+router.get('/:animeId/reviews/:reviewId/edit', isLoggedIn, animeCtrl.editReview)
 
-router.post('/:id/performers', animeCtrl.addToCast)
+router.post('/', isLoggedIn, animeCtrl.create)
 
-router.put('/:id', animeCtrl.update)
+router.post('/:id/reviews', isLoggedIn, animeCtrl.createReview)
 
-router.delete('/:id', animeCtrl.delete)
+router.post('/:id/performers', isLoggedIn, animeCtrl.addToCast)
 
-router.delete('/:animeId/reviews/:reviewId', animeCtrl.deleteReview)
+router.put('/:id', isLoggedIn, animeCtrl.update)
+
+router.put('/:animeId/reviews/:reviewId', isLoggedIn, animeCtrl.updateReview)
+
+router.delete('/:id', isLoggedIn, animeCtrl.delete)
+
+router.delete('/:animeId/reviews/:reviewId', isLoggedIn, animeCtrl.deleteReview)
 
 export {
   router
