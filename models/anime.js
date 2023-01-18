@@ -14,7 +14,6 @@ const animeSchema = new Schema({
   title: String,
   releaseYear: {type: Number, default: 2010},
   englishReleaseYear: {type: Number, default: 2010},
-  englishDubCast: [{type: Schema.Types.ObjectId, ref: 'Performer'}], 
   cast: [{type: Schema.Types.ObjectId, ref: 'Performer'}],
   owner: { type: Schema.Types.ObjectId, ref: "Profile" },
   reviews: [reviewSchema],
