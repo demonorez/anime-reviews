@@ -8,9 +8,11 @@
     <div>Title: </div>
     <div>
       <%= anime.title %>
+      <% if (user) { %>
       <a href="/anime/<%= anime._id %>/edit">
         <button>Edit Anime Details</button>
       </a>
+      <% } %>
     </div>
     <div>Release Year: </div>
     <div><%= anime.releaseYear %></div>
@@ -23,7 +25,7 @@
       <% }) %>
     </ul>
   </section>
-
+  <% if (user) { %>
   <form id="add-performer" action="/anime/<%= anime._id %>/performers" method="POST">
     <select name="performerId">
       <% performersNotInCast.forEach(performer => { %>
@@ -32,7 +34,7 @@
     </select>
     <button type="submit">Add to Cast</button>
   </form>
-
+<% } %>
   <h2>Reviews</h2>
   <% if (anime.reviews.length) { %>
     <table>
@@ -77,7 +79,8 @@
     <% } else { %>
       <h3>No Reviews Yet</h3>
     <% } %>
-  <form
+    <% if (user) { %>
+    <form
     id="add-review-form"
     action="/anime/<%= anime._id %>/reviews"
     method="POST"
@@ -99,6 +102,7 @@
     </select>
     <button type="submit">Add Review</button>
 </form>
+<% } %>
 </main>
 
 <%- include('../partials/footer') %>
