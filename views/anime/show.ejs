@@ -8,7 +8,7 @@
     <div>Title: </div>
     <div>
       <%= anime.title %>
-      <% if (user) { %>
+      <% if (review.creator._id.equals(user?.profile._id)) { %>
       <a href="/anime/<%= anime._id %>/edit">
         <button>Edit Anime Details</button>
       </a>
