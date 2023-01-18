@@ -4,14 +4,13 @@
 
 <main>
   <h1><%= title %></h1>
-  <form id="new-form" action="/anime/<%= anime._id %>?_method=PUT" method="POST">
+  <form id="update-form" action="/anime/<%= anime._id %>?_method=PUT" method="POST">
     <label for="title-input">Title</label>
     <input type="text" name="title" value="<%= anime.title %>" id="title-input">
     <label for="release-year-input">Release Year:</label>
     <input type="text" name="releaseYear" value="<%= anime.releaseYear %>" id="release-year-input">
     <label for="english-release-year-input">English Dub Release Year:</label>
     <input type="text" name="englishReleaseYear" value="<%= anime.englishReleaseYear %>" id="english-release-year-input">
-    
     <button type="submit">Update Anime</button>
   </form>
 </main>

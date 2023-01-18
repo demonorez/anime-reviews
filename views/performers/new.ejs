@@ -4,10 +4,29 @@
 
 <main>
   <h1><%= title %></h1>
-  <p>Doublecheck the list
-    <select>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Version</th>
+        <th>Delete/Update</th>
+      </tr>
+    </thead>
+    <tbody>
       <% performers.forEach(performer => { %>
-        <option><%= performer.name %></option>
+      <tr>
+        <td><%= performer.name %></td>
+        <td><%= performer.version %></td>
+        <td>
+          <% if (performer.creator._id.equals(user?.profile._id)) { %>
+            <form
+              action="/performers/<%= performer._id %>?_method=DELETE" method="POST">
+                <button type="submit">X</button>
+                <a href="/performers/<%= performer._id %>/edit" class="btn">Update</a>
+            </form> 
+          <% } %>
+        </td>
+      </tr>
       <% }) %>
     </select>
   </p>

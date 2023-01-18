@@ -1,0 +1,17 @@
+<%- include('../partials/html-head') %>
+
+<%- include('../partials/nav') %>
+
+<form id="update-performer-form" action="/performers/<%= performer._id %>?_method=PUT" method="POST">
+  <label for="name-input">Name: </label>
+  <input type="text" name="name" id="name-input" value="<%= performer.name %>">
+  <label for="version-select">Version: </label>
+  <select name="version" id="version-select">
+    <option value="<%= performer.version %>"><%= performer.version %> / Curr</option>
+    <option value="Japanese">Japanese</option>
+    <option value="English">English</option>
+  </select>
+  <button type="submit">Update</button>
+</form>
+
+<%- include("../partials/footer") %>

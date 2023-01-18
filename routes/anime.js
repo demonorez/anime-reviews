@@ -6,9 +6,9 @@ const router = Router()
 
 router.get('/', animeCtrl.index)
 
-router.get('/:id', animeCtrl.show)
-
 router.get('/new', isLoggedIn, animeCtrl.new)
+
+router.get('/:id', animeCtrl.show)
 
 router.get('/:id/edit', isLoggedIn, animeCtrl.edit)
 

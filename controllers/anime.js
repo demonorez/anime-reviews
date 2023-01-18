@@ -63,7 +63,7 @@ function deleteAnime(req, res) {
     if (anime.owner.equals(req.user.profile._id)) {
       anime.delete()
       .then(() => {
-        res.redirect('/anime')
+        res.redirect(`/anime`)
       })
     } else {
       throw new Error('Not authorized user!')
@@ -93,7 +93,7 @@ function update(req, res) {
   for (let key in req.body) {
     if(req.body[key] === "") delete req.body[key]
   }
-  Anime.findById(req.params.id, req.body, {new: true})
+  Anime.findById(req.params.id)
   .then(anime => {
     if (anime.owner.equals(req.user.profile._id)) {
       anime.updateOne(req.body)

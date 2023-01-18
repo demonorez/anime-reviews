@@ -12,6 +12,7 @@ const performerSchema = new Schema({
     enum: ["Japanese", "English"],
     default: "Japanese"
   },
+  creator: { type: Schema.Types.ObjectId, ref: "Profile" },
 }, {
   timestamps: true,
 })
