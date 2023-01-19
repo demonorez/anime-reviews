@@ -20,11 +20,13 @@
           <td><%= anime.releaseYear %></td>
           <td><a href="/anime/<%= anime._id %>">Details</a></td>
           <td>
+            <% if (anime.owner.equals(user?.profile._id)) { %>
             <form 
               action="/anime/<%= anime._id %>?_method=DELETE" 
               method="POST"
             >
               <button>X</button>
+            <% } %>  
             </form>
           </td>
         </tr>

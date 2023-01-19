@@ -10,7 +10,22 @@
     >
   </div>
   <h1>It's <%= isSelf ? "you" : profile.name %>!</h1>
-  <h2>Watchlist: </h2>
+  <div>Watchlist: </div>
+  <ul>
+    <% profile.watchlist.forEach(anime => { %>
+      <li><%= anime.title %></li>
+    <% }) %>
+  </ul>
+  <% if (isSelf) { %>
+    <form id="add-watchlist" action="/profiles/<%= profile._id %>" method="POST">
+      <select name="animeId">
+        <% animeNotInWatchlist.forEach(anime => { %>
+          <option value="<%= anime._id %>"><%= anime.title %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Add to Watchlist</button>
+    </form>
+  <% } %>
 </main>
 
 <%- include('../partials/footer') %>

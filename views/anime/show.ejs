@@ -5,10 +5,14 @@
 <main>
   <h1><%= title %></h1>
   <section>
+    <div>Image:</div>
+    <div>
+      <img src="<%= anime.image %>">
+    </div>
     <div>Title: </div>
     <div>
       <%= anime.title %>
-      <% if (review.creator._id.equals(user?.profile._id)) { %>
+      <% if (anime.owner.equals(user?.profile._id)) { %>
       <a href="/anime/<%= anime._id %>/edit">
         <button>Edit Anime Details</button>
       </a>
@@ -33,6 +37,9 @@
         <% }) %>
     </select>
     <button type="submit">Add to Cast</button>
+  </form>
+  <form id="add-to-watchlist" action="/profiles/<%= profile._id %>" method="POST">
+  <button type="submit">Add to Watchlist</button>
   </form>
 <% } %>
   <h2>Reviews</h2>

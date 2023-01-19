@@ -1,5 +1,6 @@
 import { Anime } from '../models/anime.js'
 import { Performer } from '../models/performer.js'
+import { Profile } from '../models/profile.js'
 
 function index(req, res) {
   Anime.find({})
@@ -44,16 +45,16 @@ function show(req, res) {
   .then(anime => {
     Performer.find({_id: {$nin: anime.cast}})
     .then(performersNotInCast => {
-      res.render('anime/show', {
+      Profile.findById(req.user.profile._id)
+      .then(profile => {
+        res.render('anime/show', {
         title: 'Anime Details',
         anime,
         performersNotInCast,
+        profile,
+        })
       })
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
   })
 }
 
@@ -207,6 +208,9 @@ function updateReview(req, res) {
     res.redirect('/anime')
   })
 }
+
+
+
 
 export {
   index,

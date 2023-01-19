@@ -8,6 +8,8 @@ router.get('/', isLoggedIn, profileCtrl.index)
 
 router.get('/:id', isLoggedIn, profileCtrl.show)
 
+router.post('/:id', isLoggedIn, profileCtrl.addToWatchlist)
+
 export {
   router
 }
