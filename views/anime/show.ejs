@@ -1,14 +1,14 @@
 <%- include('../partials/html-head') %>
-
+<link rel="stylesheet" href="/stylesheets/anime/show.css">
 <%- include('../partials/nav') %>
 
 <main>
   <h1><%= title %></h1>
+  <div>
+    <img src="<%= anime.image %>" width="400" height="500" class="profile-img">
+  </div></br>
   <section>
-    <div>Image:</div>
-    <div>
-      <img src="<%= anime.image %>">
-    </div>
+    
     <div>Title: </div>
     <div>
       <%= anime.title %>

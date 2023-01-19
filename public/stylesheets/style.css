@@ -1,41 +1,86 @@
 html {
-  box-sizing: border-box;
+  box-sizing: border-box
 }
 
 /* The Universal Selector */
 *, /* All elements*/
 *::before, /* All ::before pseudo-elements */
-*::after {
-  /* All ::after pseudo-elements */
-  /* height & width will now include border & padding by default but can be overridden as needed */
+*::after { /* All ::after pseudo-elements */
+  /* height & width will now include border & padding by default
+     but can be over-ridden as needed */
   box-sizing: inherit;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 body {
-  background-color: #1a1a1a;
-  color: #f6f6f6;
-  /* Use a system font, if none are available use any found sans-sarif font */
-  font-family: system-ui, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 
-    'Helvetica Neue', sans-serif;
+  background-image: url(https://i.imgur.com/AyKA41y.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0;
+  color: #0a0a0a;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas:
+    "nav"
+    "main";
+  font-size: 18px;
 }
 
-nav {
-  background-color: #f6f6f6;
-  color: #1a1a1a;
+body > main {
+  height: 1500px;
+  grid-area: main;
   display: flex;
-  align-items: center;
-  padding: 10px;
-  min-height: 60px;
-}
-
-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
+  background-color: rgba(94, 92, 92, 0.8);
+  /* background-color: transparent; */
+  padding: 20px;
 }
 
-.right {
-  margin-left: auto;
+body > main h1:first-child {
+  margin-bottom: 50px;
+}
+
+body > nav {
+  /* background-image: url(https://i.imgur.com/AyKA41y.jpg); */
+  grid-area: nav;
+  background-color: rgba(94, 92, 92, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  padding: 0 20px 0 30px;
+}
+
+nav > i {
+  width: 34px;
+  object-fit: contain;
+  margin-right: auto;
+}
+
+nav > a {
+  margin: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fbfeff;
+}
+
+nav > a:visited {
+  color: #0d0ad3;
+}
+
+nav > a:hover {
+  color: rgb(185, 12, 12);
+  background-color: #424748;
+}
+
+nav > a.active {
+  color: rgb(41, 134, 91);
+}
+
+.fas::before {
+  font-family: "Font Awesome 5 Free";
 }
