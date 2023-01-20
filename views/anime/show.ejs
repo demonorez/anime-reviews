@@ -25,6 +25,8 @@
     <div><%= anime.releaseYear %></div>
     <div>English Release Year: </div>
     <div><%= anime.englishReleaseYear %></div>
+    <div>Genre:</div>
+    <div><%= anime.genre %></div>
     <div>Cast: </div>
     <ul>
       <% anime.cast.forEach(voiceActor => { %>
@@ -68,9 +70,9 @@
               <% if (review.creator._id.equals(user?.profile._id)) { %>
                 <form 
                 action="/anime/<%= anime._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
-                  <button type="submit">Delete</button>
+                  <button type="submit">X</button>
+                  <a href="/anime/<%= anime._id %>/reviews/<%= review._id %>/edit" class="btn">Update</a>
                 </form>
-                <a href="/anime/<%= anime._id %>/reviews/<%= review._id %>/edit" class="btn">Update</a>
               <% } %>
             </td>
           </tr>

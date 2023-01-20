@@ -19,6 +19,10 @@ const animeSchema = new Schema({
   reviews: [reviewSchema],
   image: String,
   description: String,
+  genre: {
+    type: String,
+    enum: ["Action", "Adventure", "Comedy", "Romance", "Drama", "Slice of Life", "Fantasy", "Sci-fi", "Supernatural", "Isekai"]
+  }
 }, {
   timestamps: true
 })

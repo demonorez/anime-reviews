@@ -1,37 +1,38 @@
 <%- include('../partials/html-head') %>
-
+<link rel="stylesheet" href="/stylesheets/anime/edit.css">
 <%- include('../partials/nav') %>
 
-<section> 
-  <h1>Edit your Review!</h1>
-  <form
-  action="/anime/<%= anime._id %>/reviews/<%= review._id %>?_method=PUT"
-  method="POST"
-  >
-    <label>Content:
-      <textarea
-      cols="30"
-      rows="5"
-      type="text"
-      name="content"
-      autocomplete="off"
-    ><%= review.content %></textarea>
-    </label>
-    <label for="rating-select">Rating: </label>
-    <select name="rating" id="rating-select">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10" selected>10</option>
-    </select>
-    <button type="submit">Update Review</button>
-</form>
-</section>
-
+<main>
+  <section> 
+    <h1>Edit your Review!</h1>
+    <form
+    action="/anime/<%= anime._id %>/reviews/<%= review._id %>?_method=PUT"
+    method="POST"
+    >
+      <label>Content:
+        <textarea
+        cols="30"
+        rows="5"
+        type="text"
+        name="content"
+        autocomplete="off"
+      ><%= review.content %></textarea>
+      </label>
+      <label for="rating-select">Rating: </label>
+      <select name="rating" id="rating-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10" selected>10</option>
+      </select>
+      <button type="submit">Update Review</button>
+    </form>
+  </section>
+</main>
 <%- include('../partials/footer') %>

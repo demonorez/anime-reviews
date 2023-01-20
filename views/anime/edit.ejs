@@ -13,6 +13,20 @@
     <input type="text" name="releaseYear" value="<%= anime.releaseYear %>" id="release-year-input">
     <label for="english-release-year-input">English Dub Release Year:</label>
     <input type="text" name="englishReleaseYear" value="<%= anime.englishReleaseYear %>" id="english-release-year-input">
+    <label for="genre-select">Genre:</label>
+    <select name="genre" id="genre-select">
+      <option value="<%= anime.genre %>"><%= anime.genre %></option>
+      <option value="Action">Action</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Drama">Drama</option>
+      <option value="Fantasy">Fantasy</option>
+      <option value="Isekai">Isekai</option>
+      <option value="Romance">Romance</option>
+      <option value="Sci-fi">Sci-fi</option>
+      <option value="Slice of Life">Slice of Life</option>
+      <option value="Supernatural">Supernatural</option>
+    </select>
     <label for="description-input">Description: </label>
     <input type="text" name="description" id="synopsis">
     <button type="submit">Update Anime</button>
