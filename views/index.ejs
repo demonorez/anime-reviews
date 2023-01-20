@@ -2,15 +2,9 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
-  <% if (user?.profile.avatar) { %>
-    <div>
-      <img
-        src="<%= user.profile.avatar %>"
-        alt="<%= user.profile.name %> avatar"
-      />
-    </div>
-  <% } %>
+  <h1>Hello and welcome to my Anime Review Kingdom (If that's even the right word 😅</h1>
+  <h2>Feel free to take a peek at our anime lists and check out some reviews left by our users. Want to add an anime or Voice actors/actresses yourself? Log in and unlock the gates to the kingdom. What's that? Oh you wanna know about trashing an anime with brutal commentary? Well you'd better log in. No anon hate reviews here 😒!!!</h2>
+  <h4>Extra features including a friends list, links to trailers, search functionality and more will be added. We've got them chilling (🥶) in the Icebox for now.</h4>
 </main>
 
 <%- include('./partials/footer') %>
