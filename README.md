@@ -30,3 +30,5 @@ This is a site that I created for anime fans. You can create, review and update 
 -  [ ] Add friends list. 
 -  [ ] Split Voice actors into different lists depending on sub/dub.
 -  [ ] Refactor watch list functionality to place a button on the anime page as opposed to the user profile.  
+-  [ ] Refactor styling, customize buttons.
+-  [ ] Separate lists for have watched and will watch.
