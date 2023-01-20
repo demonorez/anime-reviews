@@ -45,14 +45,10 @@ function show(req, res) {
   .then(anime => {
     Performer.find({_id: {$nin: anime.cast}})
     .then(performersNotInCast => {
-      Profile.findById(req.user.profile._id)
-      .then(profile => {
         res.render('anime/show', {
         title: 'Anime Details',
         anime,
         performersNotInCast,
-        profile,
-        })
       })
     })
   })
