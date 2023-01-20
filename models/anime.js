@@ -18,6 +18,7 @@ const animeSchema = new Schema({
   owner: { type: Schema.Types.ObjectId, ref: "Profile" },
   reviews: [reviewSchema],
   image: String,
+  description: String,
 }, {
   timestamps: true
 })
