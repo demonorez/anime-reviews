@@ -4,46 +4,47 @@
 
 <main>
   <h1><%= title %></h1>
-  <div>
-    <img src="<%= anime.image %>" width="400" height="500" class="profile-img">
-  </div> 
-  <div>Synopsis: </div>
-  <div><%= anime.description %></div></br>
-  
-  <section>
-    
-    <div>Title: </div>
+  <div id="profile-img">
+    <img src="<%= anime.image %>" width="600" height="500">
     <div>
-      <%= anime.title %>
-      <% if (anime.owner.equals(user?.profile._id)) { %>
-      <a href="/anime/<%= anime._id %>/edit">
-        <button>Edit Anime Details</button>
-      </a>
-      <% } %>
+      <section>
+        <div>Title: </div>
+        <div>
+          <%= anime.title %>
+          <% if (anime.owner.equals(user?.profile._id)) { %>
+          <a href="/anime/<%= anime._id %>/edit">
+            <button>Edit Anime Details</button>
+          </a>
+          <% } %>
+        </div>
+        <div>Release Year: </div>
+        <div><%= anime.releaseYear %></div>
+        <div>English Release Year: </div>
+        <div><%= anime.englishReleaseYear %></div>
+        <div>Genre:</div>
+        <div><%= anime.genre %></div>
+        <div>Cast: </div>
+        <ul>
+          <% anime.cast.forEach(voiceActor => { %>
+            <li><%= voiceActor.name %> - <%= voiceActor.version %></li>
+          <% }) %>
+        </ul>
+        <% if (user) { %>
+          <form id="add-performer" action="/anime/<%= anime._id %>/performers" method="POST">
+            <select name="performerId">
+              <% performersNotInCast.forEach(performer => { %>
+                <option value="<%= performer._id %>"><%= performer.name %></option>
+              <% }) %>
+            </select>
+            <button type="submit">Add to Cast</button>
+          </form>
+        <% } %>
+      </section>
     </div>
-    <div>Release Year: </div>
-    <div><%= anime.releaseYear %></div>
-    <div>English Release Year: </div>
-    <div><%= anime.englishReleaseYear %></div>
-    <div>Genre:</div>
-    <div><%= anime.genre %></div>
-    <div>Cast: </div>
-    <ul>
-      <% anime.cast.forEach(voiceActor => { %>
-        <li><%= voiceActor.name %> - <%= voiceActor.version %></li>
-      <% }) %>
-    </ul>
-  </section>
-  <% if (user) { %>
-  <form id="add-performer" action="/anime/<%= anime._id %>/performers" method="POST">
-    <select name="performerId">
-      <% performersNotInCast.forEach(performer => { %>
-        <option value="<%= performer._id %>"><%= performer.name %></option>
-        <% }) %>
-    </select>
-    <button type="submit">Add to Cast</button>
-  </form>
-<% } %>
+  </div>
+  <div><h2>Synopsis:</h2>
+    <div><h2><%= anime.description %></h2></div>
+  </div>
   <h2>Reviews</h2>
   <% if (anime.reviews.length) { %>
     <table>
@@ -85,9 +86,9 @@
         </tr>
       </tbody>
     </table>
-    <% } else { %>
-      <h3>No Reviews Yet</h3>
-    <% } %>
+  <% } else { %>
+    <h3>No Reviews Yet</h3>
+  <% } %>
     <% if (user) { %>
     <form
     id="add-review-form"
@@ -110,8 +111,8 @@
       <option value="10" selected>10</option>
     </select>
     <button type="submit">Add Review</button>
-</form>
-<% } %>
+  </form>
+  <% } %>
 </main>
 
 <%- include('../partials/footer') %>
