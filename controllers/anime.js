@@ -168,8 +168,8 @@ function deleteReview(req, res) {
 function editReview(req, res) {
   Anime.findById(req.params.animeId)
   .then(anime => {
-    if (anime.owner.equals(req.user.profile._id)) {
       const reviewDoc = anime.reviews.id(req.params.reviewId)
+      if (reviewDoc.creator.equals(req.user.profile._id)) {
       res.render('anime/editReview', {
         anime,
         review: reviewDoc,
@@ -180,6 +180,8 @@ function editReview(req, res) {
     }
   })
 }
+
+
 
 function updateReview(req, res) {
   Anime.findById(req.params.animeId)
